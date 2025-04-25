@@ -1,15 +1,9 @@
-/* src/components/PokeballCounter.css */
-/* si lo borraste, vuelve a ponerlo */
 .pokeball-counter{display:inline-flex;gap:12px;font-family:'Press Start 2P',sans-serif;font-size:14px;color:#fff}
 .ball{display:inline-flex;align-items:center;gap:6px}
-.ball img{width:20px;height:20px;object-fit:contain}
+.ball img,.pokeball-icon{width:20px;height:20px;object-fit:contain}
 .pokeball-icon{
   width:20px;
   height:20px;
   object-fit:contain;
 }  
-  .pokeball-count {
-    min-width: 22px;
-    text-align: right;
-  }
-  
+.pokeball-count{min-width:22px;text-align:right}
