@@ -1,146 +1,42 @@
-/* src/components/CaptureModal.css */
+/* Overlay */
+.capture-overlay{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.7);display:flex;justify-content:center;align-items:center;z-index:9999}
+  
+ /* Fade-in */
+.fade-in{animation:fadeIn .4s ease-out}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
 
-/* Overlay del modal */
-.capture-overlay {
-    position: fixed;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    background: rgba(0,0,0,0.7);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 9999;
-  }
+/* Ventana */
+.capture-modal{background:#fff;padding:20px;border-radius:8px;width:440px;text-align:center}
+.capture-modal h2{font-family:'Press Start 2P',monospace;font-size:16px;margin-bottom:12px;text-transform:uppercase}
+
+/* Escena */
+.capture-scene{
+  position:relative;width:400px;height:240px;
+  margin:0 auto;
+  background:url('../assets/grass_battlefield.png') center / cover no-repeat;
+  border:2px solid #555;border-radius:5px;overflow:hidden;
+}
   
-  /* Fade-in */
-  .fade-in {
-    animation: fadeIn 0.4s ease-out;
-  }
-  @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+/* Pokémon */
+.capture-pokemon{position:absolute;left:260px;top:70px;width:96px;height:96px;object-fit:contain;filter:drop-shadow(0 0 2px #fff) drop-shadow(0 0 4px #fff);z-index:2}
+
+/* Poké Ball CSS */
+.pokeball{position:absolute;left:16px;bottom:16px;width:40px;height:40px;background:#fff;border:2px solid #000;border-radius:50%;overflow:hidden;z-index:3}
+.pokeball::before{content:'';position:absolute;top:0;left:0;width:100%;height:50%;background:red}
+.pokeball::after{content:'';position:absolute;top:48%;left:0;width:100%;height:4px;background:#000}
+.center-button{position:absolute;top:50%;left:50%;width:10px;height:10px;background:#fff;border:2px solid #000;border-radius:50%;transform:translate(-50%,-50%);z-index:4}
+
+  /* Ultra Ball imagen */
+.ultraball{position:absolute;left:16px;bottom:16px;width:40px;height:40px;object-fit:contain;z-index:3}
+
+  /* Animaciones */
+.pokeball-throw,.ultraball-throw{position:absolute;animation:throwBall 1s ease-out forwards,ballShake .3s ease-in-out 3 1s forwards}
+@keyframes throwBall{0%{transform:translate(0,0) rotate(0deg)}50%{transform:translate(200px,-100px) rotate(360deg)}100%{transform:translate(280px,-60px) rotate(720deg)}}
+@keyframes ballShake{0%{transform:translate(280px,-60px) rotate(0)}25%{transform:translate(280px,-70px) rotate(-10deg)}50%{transform:translate(280px,-60px) rotate(10deg)}75%{transform:translate(280px,-66px) rotate(-6deg)}100%{transform:translate(280px,-60px) rotate(0)}}
+
+/* Botón */
+.capture-modal button{margin-top:15px;padding:8px 12px;font-family:'Press Start 2P',monospace;font-size:12px;background:#fff;border:2px solid #000;border-radius:4px;cursor:pointer}
+.capture-modal button:hover{background:#eee}
+
   
-  /* Ventana */
-  .capture-modal {
-    background: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    width: 440px;
-    text-align: center;
-  }
-  
-  /* Título arcade */
-  .capture-modal h2 {
-    font-family: 'Press Start 2P', monospace;
-    font-size: 16px;
-    margin-bottom: 12px;
-    text-transform: uppercase;
-  }
-  
-  /* Escena */
-  .capture-scene {
-    position: relative;
-    width: 400px; height: 240px;
-    margin: 0 auto;
-    background: url('../assets/grass_battlefield.png') center/cover no-repeat;
-    border: 2px solid #555;
-    border-radius: 5px;
-    overflow: hidden;
-  }
-  
-  /* Pokémon */
-  .capture-pokemon {
-    position: absolute;
-    left: 260px; top: 70px;
-    width: 96px; height: 96px;
-    object-fit: contain;
-    filter: drop-shadow(0 0 2px #fff) drop-shadow(0 0 4px #fff);
-    z-index: 2;
-  }
-  
-  /* ─── Poké Ball dibujada en CSS ─── */
-  .pokeball {
-    position: absolute;
-    left: 16px; bottom: 16px;
-    width: 40px; height: 40px;
-    background: #fff;
-    border: 2px solid #000;
-    border-radius: 50%;
-    overflow: hidden;
-    z-index: 3;
-  }
-  .pokeball::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0;
-    width: 100%; height: 50%;
-    background: red;
-  }
-  .pokeball::after {
-    content: '';
-    position: absolute;
-    top: 48%;
-    left: 0;
-    width: 100%; height: 4px;
-    background: #000;
-  }
-  
-  /* Centro de la bola (solo Poké Ball) */
-  .center-button {
-    position: absolute;
-    top: 50%; left: 50%;
-    width: 10px; height: 10px;
-    background: #fff;
-    border: 2px solid #000;
-    border-radius: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 4;
-  }
-  
-  /* ─── Ultra Ball como imagen ─── */
-  .ultraball {
-    position: absolute;
-    left: 16px; bottom: 16px;
-    width: 40px; height: 40px;
-    object-fit: contain;
-    z-index: 3;
-  }
-  
-  /* Animación compartida */
-  .pokeball-throw,
-  .ultraball-throw {
-    position: absolute;
-    animation:
-      throwBall 1s ease-out forwards,
-      ballShake 0.3s ease-in-out 3 1s forwards;
-  }
-  
-  /* Keyframes: lanzamiento en arco */
-  @keyframes throwBall {
-    0%   { transform: translate(0,0) rotate(0deg); }
-    50%  { transform: translate(200px,-100px) rotate(360deg); }
-    100% { transform: translate(280px,-60px) rotate(720deg); }
-  }
-  
-  /* Keyframes: sacudida final */
-  @keyframes ballShake {
-    0%   { transform: translate(280px,-60px) rotate(0deg); }
-    25%  { transform: translate(280px,-70px) rotate(-10deg); }
-    50%  { transform: translate(280px,-60px) rotate(10deg); }
-    75%  { transform: translate(280px,-66px) rotate(-6deg); }
-   100%  { transform: translate(280px,-60px) rotate(0deg); }
-  }
-  
-  /* Botón Lanzar */
-  .capture-modal button {
-    margin-top: 15px;
-    padding: 8px 12px;
-    font-family: 'Press Start 2P', monospace;
-    font-size: 12px;
-    background: #fff;
-    border: 2px solid #000;
-    border-radius: 4px;
-    cursor: pointer;
-  }
-  .capture-modal button:hover {
-    background: #eee;
-  }
   
