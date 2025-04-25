@@ -1,0 +1,359 @@
+/* src/components/PokeAPI.css */
+/* CSS completo: cartas compactas con scroll único y tache en esquina */
+
+.contenedor-formulario {
+  padding: 20px;
+}
+
+.titulo {
+  font-size: 24px;
+  margin-bottom: 10px;
+  font-family: 'Press Start 2P', monospace;
+}
+
+.boton {
+  padding: 8px 16px;
+  font-size: 14px;
+  cursor: pointer;
+  margin-right: 10px;
+  font-family: 'Press Start 2P', monospace;
+}
+
+************************************************
+ * Escena de captura
+ ************************************************/
+.capture-scene {
+  position: relative;
+  width: 400px;
+  height: 240px;
+  background: url('../assets/grass_battlefield.png') center/cover no-repeat;
+  margin-top: 15px;
+  border: 2px solid #555;
+  border-radius: 5px;
+  overflow: hidden;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px;
+}
+
+.capture-pokemon {
+  width: 90px;
+  height: 90px;
+  object-fit: contain;
+  border: 4px solid #fff;
+  border-radius: 8px;
+}
+
+.pokeball {
+  width: 40px;
+  height: 40px;
+  border: 2px solid #000;
+  border-radius: 50%;
+  background: #fff;
+  position: relative;
+  flex: 0 0 40px;
+}
+
+.pokeball::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 50%;
+  background: red;
+}
+.pokeball::after {
+  content: "";
+  position: absolute;
+  top: 48%;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: #000;
+}
+.center-button {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 10px;
+  height: 10px;
+  background: #fff;
+  border: 2px solid #000;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.pokeball-throw {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  animation: throwBall 1.2s forwards ease-out;
+}
+.pokeball-shake {
+  animation: ballShake 0.35s ease-in-out 3 1.2s forwards;
+}
+.favoritos-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 12px;
+  margin-top: 20px;
+  justify-items: center;
+}
+
+/************************************************
+ * Carta Pokédex: altura fija + scroll único
+ ************************************************/
+.pokedex-card-fav {
+  width: 260px;
+  height: 360px;
+  background: #343434;
+  border: 3px solid #ffd02f;
+  border-radius: 12px;
+  padding: 10px;
+  box-sizing: border-box;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto; /* scroll de la carta */
+  color: #fff;
+  font-family: 'Press Start 2P', monospace;
+}
+
+/* Tache de cierre en esquina */
+.pokedex-card-fav .eliminar-btn {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background: transparent;
+  border: none;
+  font-size: 18px;
+  color: #fff;
+  cursor: pointer;
+  z-index: 2;
+}
+.pokedex-card-fav .eliminar-btn:hover {
+  color: #ff4f4f;
+}
+
+/************************************************
+ * Encabezado de la carta
+ ************************************************/
+.pokedex-header {
+  text-align: center;
+  margin-bottom: 8px;
+  flex: 0 0 auto;
+}
+.pokedex-header h2 {
+  margin: 0;
+  font-size: 16px;
+}
+
+/************************************************
+ * Pantalla principal de detalles
+ ************************************************/
+.pokedex-screen {
+  background: #222;
+  border: 2px inset #666;
+  border-radius: 8px;
+  padding: 8px;
+  display: flex;
+  gap: 8px;
+  margin-bottom: 8px;
+  flex: 0 0 auto;
+}
+.pokedex-screen img {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+  border: 2px solid #fff;
+  border-radius: 5px;
+}
+.pokedex-info {
+  font-size: 10px;
+  flex: 1 1 auto;
+  line-height: 1.4;
+}
+
+/************************************************
+ * Scrollbar de la carta
+ ************************************************/
+.pokedex-card-fav::-webkit-scrollbar {
+  width: 6px;
+}
+.pokedex-card-fav::-webkit-scrollbar-track {
+  background: #222;
+}
+.pokedex-card-fav::-webkit-scrollbar-thumb {
+  background-color: #666;
+  border-radius: 3px;
+  border: 1px solid #444;
+}
+
+/************************************************
+ * Animación de entrada de Pokémon
+ ************************************************/
+.pokemon-entry {
+  animation: pokeEntry 0.6s ease-out;
+}
+@keyframes pokeEntry {
+  0%   { transform: scale(0.2); opacity: 0; }
+  60%  { transform: scale(1.2); opacity: 1; }
+ 100%  { transform: scale(1); opacity: 1; }
+}
+
+/************************************************
+ * Modal de Captura
+ ************************************************/
+.capture-overlay {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+.capture-modal {
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  text-align: center;
+  width: 440px;
+}
+.fade-in {
+  animation: fadeIn 0.4s ease-out;
+}
+@keyframes fadeIn {
+  from { opacity: 0; } to { opacity: 1; }
+}
+
+/************************************************
+ * Escena de Captura
+ ************************************************/
+/* src/components/PokeAPI.css */
+/* ==== Captura: escena y animación completa ==== */
+
+.capture-scene {
+  position: relative;
+  width: 400px;
+  height: 240px;
+  background: url('../assets/grass_battlefield.png') center/cover no-repeat;
+  border: 2px solid #555;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.capture-pokemon {
+  position: absolute;
+  left: 260px; top: 70px;
+  width: 96px; height: 96px;
+  object-fit: contain;
+  filter: drop-shadow(0 0 2px #fff) drop-shadow(0 0 4px #fff);
+}
+
+
+.pokeball {
+  position: absolute;
+  left: 16px;
+  bottom: 16px;
+  width: 40px;
+  height: 40px;
+  background: #fff;
+  border: 2px solid #000;
+  border-radius: 50%;
+  overflow: hidden;
+  z-index: 1;
+}
+.pokeball::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 50%;
+  background: red;
+}
+.pokeball::after {
+  content: '';
+  position: absolute;
+  top: 48%;
+  left: 0;
+  width: 100%; height: 4px;
+  background: #000;
+}
+
+.center-button {
+  position: absolute;
+  top: 50%; left: 50%;
+  width: 10px; height: 10px;
+  background: #fff;
+  border: 2px solid #000;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+}
+
+/* Se añade la clase pokeball-throw cuando throwing===true */
+.pokeball-throw {
+  animation:
+    throwBall 1s ease-out forwards,
+    ballShake 0.3s ease-in-out 3 1s forwards;
+}
+
+/* Viaje por el aire */
+@keyframes throwBall {
+  0%   { transform: translate(0, 0) rotate(0deg); }
+  50%  { transform: translate(200px, -100px) rotate(360deg); }
+  100% { transform: translate(280px, -60px) rotate(720deg); }
+}
+
+/* Sacudida final sobre la Poké Ball */
+@keyframes ballShake {
+  0%   { transform: translate(280px, -60px) rotate(0deg); }
+  25%  { transform: translate(280px, -70px) rotate(-10deg); }
+  50%  { transform: translate(280px, -60px) rotate(10deg); }
+  75%  { transform: translate(280px, -66px) rotate(-6deg); }
+  100% { transform: translate(280px, -60px) rotate(0deg); }
+}
+
+.ultraball {
+  position: absolute;
+  left: 16px;
+  bottom: 16px;
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+  z-index: 1;
+  -webkit-clip-path: circle(50% at 50% 50%);
+  clip-path: circle(50% at 50% 50%);
+  background: transparent;
+
+}
+
+/* Reusa la animación de throwBall para Ultra Ball */
+.ultraball-throw {
+  animation: throwBall 1.2s ease-out forwards;
+}
+
+/* Asegúrate de tener estos keyframes en tu PokeAPI.css */
+@keyframes throwBall {
+  0%   { transform: translate(0, 0) rotate(0deg); }
+  50%  { transform: translate(200px, -100px) rotate(360deg); }
+  100% { transform: translate(280px, -60px) rotate(720deg); }
+}
+
+
+
+
+
+
+
+
+
+  
+  
+  
+  
+  

@@ -1,0 +1,29 @@
+.leaderboard-window {
+    position: absolute;
+    top: 80px;
+    right: 20px;
+    width: 180px;
+    background: #111;
+    border: 2px solid #FFD700;
+    border-radius: 12px;
+    padding: 12px;
+    color: #FFD700;
+    font-family: 'Press Start 2P', monospace;
+    z-index: 10;
+  }
+  .leaderboard-window h3 {
+    margin: 0 0 8px;
+    font-size: 12px;
+    text-align: center;
+  }
+  .leaderboard-window ol {
+    list-style: decimal;
+    margin: 0;
+    padding: 0 0 0 16px;
+  }
+  .leaderboard-window li {
+    font-size: 10px;
+    line-height: 1.4;
+    margin-bottom: 4px;
+  }
+  
