@@ -1,31 +1,41 @@
 /* src/components/PokemonSearch.css */
-.pokemon-search { position: relative; width: 300px; font-family: 'Press Start 2P', monospace; }
-.filters { display: flex; gap: 8px; margin-bottom: 6px; }
-.filters select { flex: 1; padding: 6px; font-size: 12px; background: #222; color: #fff; border: 2px solid #ffd02f; border-radius: 4px; }
-.search-wrapper { position: relative; }
+.pokemon-search{position:relative;width:300px;font-family:'Press Start 2P',monospace}
+.filters{display:flex;gap:8px;margin-bottom:6px}
+.filters select{flex:1;padding:6px;font-size:12px;background:#222;color:#fff;border:2px solid #ffd02f;border-radius:4px}
+.search-wrapper{position:relative}
 
-.suggestions-list {
-  position: absolute;
-  top: 100%;
-  left: 0;
-  right: 0;
-  background: #222;
-  border: 2px solid #ffd02f;
-  border-top: none;
-  max-height: 200px;
-  overflow-y: auto;
-  border-radius: 0 0 4px 4px;
-  z-index: 10;
-  margin: 0;
-  padding: 0;
-  list-style: none;
+.suggestions-list{
+  position:absolute;
+  top:100%;
+  left:0;right:0;
+  background:#222;
+  border:2px solid #ffd02f;
+  border-top:none;
+  max-height:200px;
+  overflow-y:auto;
+  border-radius:0 0 4px 4px;
+  z-index:10;
+  margin:0;
+  padding:0;
+  list-style:none;
 }
-.search-input { width: 100%; padding: 8px; background: #343434; color: #fff; border: 2px solid #ffd02f; border-radius: 4px; outline: none; }
-.suggestions-list { position: absolute; top: calc(100% + 2px); left: 0; right: 0; background: #222; border: 2px solid #ffd02f; max-height: 200px; overflow-y: auto; border-radius: 0 0 4px 4px; z-index: 10; margin: 0; padding: 0; list-style: none; }
-.suggestion-item { padding: 6px 10px; cursor: pointer; color: #fff; border-bottom: 1px dotted #444; }
-.suggestion-item:hover { background: #555; }
-.preview-popup { position: absolute; top: 0; right: -120px; width: 100px; background: #fff; border: 2px solid #ffd02f; border-radius: 4px; padding: 6px; text-align: center; z-index: 20; }
-.preview-popup img { width: 72px; height: 72px; object-fit: contain; }
+
+.search-input{width:100%;padding:8px;background:#343434;color:#fff;border:2px solid #ffd02f;border-radius:4px;outline:none}
+.suggestion-item{padding:6px 10px;cursor:pointer;color:#fff;border-bottom:1px dotted #444}
+.suggestion-item:hover{background:#555}
+
+.preview-popup{
+  position:absolute;top:0;right:-120px;
+  width:100px;
+  background:#fff;
+  border:2px solid #ffd02f;
+  border-radius:4px;
+  padding:6px;
+  text-align:center;
+  z-index:20;
+}
+.preview-popup img{width:72px;height:72px;object-fit:contain}
+
 
 
 
